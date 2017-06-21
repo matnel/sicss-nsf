@@ -14,4 +14,6 @@ docs <- out$documents
 vocab <- out$vocab
 meta <-out$meta
 
-save( docs, vocab, meta, file = 'processed.rdata' )
+out <- prepDocuments(processed$documents, processed$vocab, processed$meta, lower.thresh = 50)
+
+save( out, docs, vocab, meta, file = 'processed.rdata' )
