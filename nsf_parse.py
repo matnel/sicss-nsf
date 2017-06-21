@@ -5,6 +5,9 @@ import dateparser
 import os
 
 data = []
+small = []
+
+import random
 
 for p in 'Part 1', 'Part 2', 'Part 3':
 
@@ -36,7 +39,12 @@ for p in 'Part 1', 'Part 2', 'Part 3':
 
                 d['Date'] = dateparser.parse( d['Date'] )
 
-                data += d
+                data.append( d )
+
+                if random.random() < 0.01:
+                    small.append( d )
+
 import json
 
 json.dump( data, open('data.json', 'w') )
+json.dump( small, open('data_small.json', 'w') )
