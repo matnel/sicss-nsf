@@ -31,13 +31,19 @@ for p in 'Part 1', 'Part 2', 'Part 3':
 
                         key = line.split(':')[0].strip()
 
-                        d[ key ] = line.split(':')[1].strip()
+                        try:
+                            d[ key ] = line.split(':')[1].strip().decode('utf-8')
+                        except:
+                            print 'UTF8 fail', line.strip()
 
                     else:
 
-                        d[ key ] += ' ' + line.strip()
+                        try:
+                            d[ key ] += ' ' + line.strip().decode('utf-8')
+                        except:
+                            print 'UTF8 fail', line.strip()
 
-                d['Date'] = dateparser.parse( d['Date'] )
+                d['Date'] = str( dateparser.parse( d['Date'] ) )
 
                 data.append( d )
 
