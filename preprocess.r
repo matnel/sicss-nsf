@@ -6,8 +6,8 @@ data <- fromJSON( 'data_small.json', simplifyDataFrame=T )
 
 summary( data )
 
-## for initial version only like this
-processed <- textProcessor(data$Abstract, metadata = data)
+## for initial version only like this, change to the fancier one later on
+processed <- textProcessor(Abstract_cleaned, metadata = data)
 out <- prepDocuments(processed$documents, processed$vocab, processed$meta)
 
 docs <- out$documents

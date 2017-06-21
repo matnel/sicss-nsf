@@ -4,6 +4,8 @@ import dateparser
 
 import os
 
+import nltk
+
 data = []
 small = []
 
@@ -46,6 +48,14 @@ for p in 'Part 1', 'Part 2', 'Part 3':
                             print line.strip()
 
                 d['Date'] = str( dateparser.parse( d['Date'] ) )
+
+                ## only verbs, adjectives and adverbs
+                abst = nltk.word_tokenize( d['Abstract'] )
+                abst = nltk.pos_tag( abst )
+
+                ## only adjectives and adverbs
+                abst = filter( lambda x: x[1] in ['RB', 'JJ', 'JJR', 'JJS', 'RBR', 'RBS'], abst )
+                d['Abstract_cleaned'] = ' '.join( map( lambda x: x[0], abst ) )
 
                 data.append( d )
 
