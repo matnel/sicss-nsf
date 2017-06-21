@@ -34,14 +34,16 @@ for p in 'Part 1', 'Part 2', 'Part 3':
                         try:
                             d[ key ] = line.split(':')[1].strip().decode('utf-8')
                         except:
-                            print 'UTF8 fail', line.strip()
+                            print 'UTF8 fail', f
+                            print line.strip()
 
                     else:
 
                         try:
                             d[ key ] += ' ' + line.strip().decode('utf-8')
                         except:
-                            print 'UTF8 fail', line.strip()
+                            print 'UTF8 fail', f
+                            print line.strip()
 
                 d['Date'] = str( dateparser.parse( d['Date'] ) )
 
