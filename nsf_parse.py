@@ -32,6 +32,7 @@ for p in 'Part 1', 'Part 2', 'Part 3':
                     if ':' in line and key != 'Abstract':
 
                         key = line.split(':')[0].strip()
+                        key = key.replace(' ', '_')
 
                         try:
                             d[ key ] = line.split(':')[1].strip().decode('utf-8')
@@ -56,6 +57,8 @@ for p in 'Part 1', 'Part 2', 'Part 3':
                 ## only adjectives and adverbs
                 abst = filter( lambda x: x[1] in ['RB', 'JJ', 'JJR', 'JJS', 'RBR', 'RBS'], abst )
                 d['Abstract_cleaned'] = ' '.join( map( lambda x: x[0], abst ) )
+
+                d['Fld_Applictn'] = d['Fld_Applictn'].split(' ')
 
                 data.append( d )
 
